@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:swifty_text_flutter/views/screens/login_screen.dart';
+import 'package:swifty_text_flutter/views/screens/auth/login_screen.dart';
 
 void main() {
   runApp(const MyApp());

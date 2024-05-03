@@ -1,6 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:swifty_text_flutter/views/screens/auth/forgot_password_screen.dart';
+import 'package:swifty_text_flutter/views/screens/auth/signup_screen.dart';
+import 'package:swifty_text_flutter/views/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,15 +22,27 @@ class _LoginScreenState extends State<LoginScreen> {
     showPassword = false;
   }
 
-  @override
   Future<void> _handleLogin() async {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState!.validate()) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    }
   }
 
   Future<void> _handleShowPassword() async {
     setState(() {
       showPassword = !showPassword;
     });
+  }
+
+  Future<void> _handleForgotPassword() async {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+  }
+
+  Future<void> _handleSignup() async {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SignupScreen()));
   }
 
   @override
@@ -82,8 +97,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                          onPressed: _handleForgotPassword,
+                          style: const ButtonStyle().copyWith(
+                              overlayColor: const MaterialStatePropertyAll(
+                                  Colors.transparent)),
+                          child: const Text('Forgot your password?')),
+                    ],
+                  ),
                   const SizedBox(
-                    height: 40,
+                    height: 10,
                   ),
                   FilledButton(
                     onPressed: _handleLogin,
@@ -117,13 +143,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const FilledButton(
-                    onPressed: null,
-                    child: Text("Sign Up"),
-                    style: ButtonStyle(
+                  FilledButton(
+                    onPressed: _handleSignup,
+                    style: const ButtonStyle(
                       fixedSize:
                           MaterialStatePropertyAll(Size(double.maxFinite, 50)),
                     ),
+                    child: const Text("Sign Up"),
                   ),
                   const SizedBox(
                     height: 20,
