@@ -11,8 +11,15 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  bool showPassword = false;
+  late bool showPassword;
 
+  @override
+  void initState() {
+    super.initState();
+    showPassword = false;
+  }
+
+  @override
   Future<void> _handleLogin() async {
     if (_formKey.currentState!.validate()) {}
   }
@@ -26,90 +33,138 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.lock_outline),
-                      hintText: "Enter your email address"),
-                  validator: (val) {
-                    if (val == null || val.isEmpty) {
-                      return 'Plase enter email!';
-                    } else if (EmailValidator.validate(val) == false) {
-                      return 'Wrong email format!';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  obscureText: showPassword,
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person_outline),
-                      suffixIcon: IconButton(
-                          onPressed: _handleShowPassword,
-                          icon: Icon(
-                              showPassword ? EvaIcons.eyeOff : EvaIcons.eye)),
-                      hintText: "Enter your password"),
-                  validator: (val) {
-                    if (val == null || val.isEmpty) {
-                      return 'Please enter username!';
-                    }
-                    return null;
-                  },
-                ),
-                FilledButton(
-                  onPressed: _handleLogin,
-                  child: Text("Log In"),
-                  style: const ButtonStyle(
-                      fixedSize:
-                          MaterialStatePropertyAll(Size(double.maxFinite, 50))),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                const Text("Or Sign Up Using"),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        EvaIcons.facebook,
-                        color: Colors.white,
-                      ),
-                      style: const ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                              Color.fromARGB(255, 1, 127, 254))),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+        child: SingleChildScrollView(
+          child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Text(
+                    "Login",
+                    style: const TextStyle().copyWith(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
                     ),
-                    IconButton(
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.lock_outline),
+                        hintText: "Enter your email address"),
+                    validator: (val) {
+                      if (val == null || val.isEmpty) {
+                        return 'Plase enter email!';
+                      } else if (EmailValidator.validate(val) == false) {
+                        return 'Wrong email format!';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    obscureText: !showPassword,
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.person_outline),
+                        suffixIcon: IconButton(
+                            onPressed: _handleShowPassword,
+                            icon: Icon(
+                                showPassword ? EvaIcons.eye : EvaIcons.eyeOff)),
+                        hintText: "Enter your password"),
+                    validator: (val) {
+                      if (val == null || val.isEmpty) {
+                        return 'Please enter username!';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  FilledButton(
+                    onPressed: _handleLogin,
+                    style: const ButtonStyle(
+                        fixedSize: MaterialStatePropertyAll(
+                            Size(double.maxFinite, 50))),
+                    child: const Text("Log In"),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Row(
+                    children: [
+                      Expanded(
+                          child: Divider(
+                        color: Colors.black,
+                      )),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("OR"),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                          child: Divider(
+                        color: Colors.black,
+                      )),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const FilledButton(
+                    onPressed: null,
+                    child: Text("Sign Up"),
+                    style: ButtonStyle(
+                      fixedSize:
+                          MaterialStatePropertyAll(Size(double.maxFinite, 50)),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
                         onPressed: () {},
                         icon: const Icon(
-                          EvaIcons.twitter,
+                          EvaIcons.facebook,
+                          color: Colors.white,
+                        ),
+                        style: const ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                Color.fromARGB(255, 1, 127, 254))),
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            EvaIcons.twitter,
+                            color: Colors.white,
+                          ),
+                          style: const ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Colors.lightBlue))),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          EvaIcons.google,
                           color: Colors.white,
                         ),
                         style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.lightBlue))),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        EvaIcons.google,
-                        color: Colors.white,
+                                MaterialStatePropertyAll(Colors.red)),
                       ),
-                      style: const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.red)),
-                    ),
-                  ],
-                )
-              ],
-            )),
+                    ],
+                  ),
+                ],
+              )),
+        ),
       ),
     );
   }
