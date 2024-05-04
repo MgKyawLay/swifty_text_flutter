@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _handleLogin() async {
     if (_formKey.currentState!.validate()) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
     }
   }
 
@@ -37,12 +37,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _handleForgotPassword() async {
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+        MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()));
   }
 
   Future<void> _handleSignup() async {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SignupScreen()));
+        context, MaterialPageRoute(builder: (context) => const SignupScreen()));
   }
 
   @override
