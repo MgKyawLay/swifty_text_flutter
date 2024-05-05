@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextFormField(
                     decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.lock_outline),
+                        prefixIcon: Icon(Icons.email_outlined),
                         hintText: "Enter your email address"),
                     validator: (val) {
                       if (val == null || val.isEmpty) {
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     obscureText: !showPassword,
                     decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.person_outline),
+                        prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
                             onPressed: _handleShowPassword,
                             icon: Icon(
