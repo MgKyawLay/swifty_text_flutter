@@ -19,9 +19,9 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   final List<Widget> _screens = <Widget>[
-    ChatScreen(),
-    Icon(EvaIcons.people),
-    Icon(EvaIcons.settings2),
+    const ChatScreen(),
+    const Icon(EvaIcons.people),
+    const Icon(EvaIcons.settings2),
   ];
 
   @override
@@ -31,7 +31,7 @@ class HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _handleOnTap,
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(EvaIcons.messageCircleOutline), label: "Chat"),
           BottomNavigationBarItem(

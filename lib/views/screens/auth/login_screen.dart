@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter/services.dart';
 import 'package:swifty_text_flutter/views/screens/auth/forgot_password_screen.dart';
 import 'package:swifty_text_flutter/views/screens/auth/signup_screen.dart';
 import 'package:swifty_text_flutter/views/screens/home_screen.dart';
@@ -48,6 +49,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.white10,
+            statusBarBrightness: Brightness.dark),
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
         child: SingleChildScrollView(
