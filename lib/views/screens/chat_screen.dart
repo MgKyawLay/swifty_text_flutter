@@ -38,6 +38,8 @@ import 'package:provider/provider.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => ChatScreenState();
 }
@@ -67,7 +69,7 @@ class ChatScreenState extends State<ChatScreen> {
       body: Consumer<RecentChatListViewModel>(
         builder: (context, viewModel, child) {
           if (viewModel.chats.isEmpty) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else {
@@ -76,7 +78,7 @@ class ChatScreenState extends State<ChatScreen> {
                 itemBuilder: (context, index) {
                   final chat = viewModel.chats[index];
 
-                  return ListTile(
+                  return const ListTile(
                     leading: CircleAvatar(),
                   );
                 });

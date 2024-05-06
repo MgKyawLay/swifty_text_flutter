@@ -19,7 +19,7 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   final List<Widget> _screens = <Widget>[
-    ChatScreen(),
+    const ChatScreen(),
     const Icon(EvaIcons.people),
     const Icon(EvaIcons.settings2),
   ];

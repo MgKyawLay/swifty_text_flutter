@@ -7,7 +7,7 @@ import 'package:swifty_text_flutter/views/screens/auth/login_screen.dart';
 void main() {
   runApp(ChangeNotifierProvider(
     create: (context) => RecentChatListViewModel(),
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
