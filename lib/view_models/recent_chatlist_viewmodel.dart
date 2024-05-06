@@ -1,24 +1,23 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:swifty_text_flutter/models/recentChant.model.dart';
 
 class RecentChatListViewModel extends ChangeNotifier {
-  List<RecentChat> _recentChatPersons = [];
-  List<RecentChat> get recentChatPersons => _recentChatPersons;
+  List<RecentChat> _chats = [];
 
-  Future<void> fetchRecentChats() async {
+  List<RecentChat> get chats => _chats;
+
+  Future<void> fetchChats() async {
     try {
-      final response = await rootBundle.loadString('lib/mock/chat_data.json');
+      final response =
+          await rootBundle.loadString('assets/mock/chat_data.json');
       final json = jsonDecode(response) as List<dynamic>;
-      _recentChatPersons =
-          json.map((item) => RecentChat.fromJson(item)).toList();
+      _chats = json.map((chat) => RecentChat.fromJson(chat)).toList();
+      notifyListeners();
     } catch (e) {
-      if (kDebugMode) {
-        print('Error loading recent chat : $e');
-      }
+      throw Exception('Failed to load chats: $e');
     }
   }
 }

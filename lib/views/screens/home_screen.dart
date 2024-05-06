@@ -19,7 +19,7 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   final List<Widget> _screens = <Widget>[
-    const ChatScreen(),
+    ChatScreen(),
     const Icon(EvaIcons.people),
     const Icon(EvaIcons.settings2),
   ];
@@ -29,6 +29,7 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: _screens.elementAt(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
         onTap: _handleOnTap,
         items: const [

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:swifty_text_flutter/view_models/recent_chatlist_viewmodel.dart';
 import 'package:swifty_text_flutter/views/screens/auth/login_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => RecentChatListViewModel(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

@@ -1,13 +1,13 @@
 class RecentChat {
   final int id;
-  final String profile;
+  final String? profile;
   final String name;
   final String lastMessage;
   final int unreadCount;
 
   RecentChat({
     required this.id,
-    required this.profile,
+    this.profile,
     required this.name,
     required this.lastMessage,
     required this.unreadCount,

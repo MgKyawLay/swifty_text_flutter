@@ -50,153 +50,155 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Login",
+            style: const TextStyle()
+                .copyWith(fontSize: 40, fontWeight: FontWeight.bold)),
+        centerTitle: true,
         systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: Colors.white10,
             statusBarBrightness: Brightness.dark),
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
-        child: SingleChildScrollView(
-          child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  Text(
-                    "Login",
-                    style: const TextStyle().copyWith(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.email_outlined),
-                        hintText: "Enter your email address"),
-                    validator: (val) {
-                      if (val == null || val.isEmpty) {
-                        return 'Plase enter email!';
-                      } else if (EmailValidator.validate(val) == false) {
-                        return 'Wrong email format!';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  TextFormField(
-                    obscureText: !showPassword,
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock_outline),
-                        suffixIcon: IconButton(
-                            onPressed: _handleShowPassword,
-                            icon: Icon(
-                                showPassword ? EvaIcons.eye : EvaIcons.eyeOff)),
-                        hintText: "Enter your password"),
-                    validator: (val) {
-                      if (val == null || val.isEmpty) {
-                        return 'Please enter username!';
-                      }
-                      return null;
-                    },
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                          onPressed: _handleForgotPassword,
-                          style: const ButtonStyle().copyWith(
-                              overlayColor: const MaterialStatePropertyAll(
-                                  Colors.transparent)),
-                          child: const Text('Forgot your password?')),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  FilledButton(
-                    onPressed: _handleLogin,
-                    style: const ButtonStyle(
-                        fixedSize: MaterialStatePropertyAll(
-                            Size(double.maxFinite, 50))),
-                    child: const Text("Log In"),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Row(
-                    children: [
-                      Expanded(
-                          child: Divider(
-                        color: Colors.black,
-                      )),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text("OR"),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                          child: Divider(
-                        color: Colors.black,
-                      )),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  FilledButton(
-                    onPressed: _handleSignup,
-                    style: const ButtonStyle(
+        padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+        child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                // Text(
+                //   "Login",
+                //   style: const TextStyle().copyWith(
+                //     fontSize: 40,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.email_outlined),
+                      hintText: "Enter your email address"),
+                  validator: (val) {
+                    if (val == null || val.isEmpty) {
+                      return 'Plase enter email!';
+                    } else if (EmailValidator.validate(val) == false) {
+                      return 'Wrong email format!';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  obscureText: !showPassword,
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      suffixIcon: IconButton(
+                          onPressed: _handleShowPassword,
+                          icon: Icon(
+                              showPassword ? EvaIcons.eye : EvaIcons.eyeOff)),
+                      hintText: "Enter your password"),
+                  validator: (val) {
+                    if (val == null || val.isEmpty) {
+                      return 'Please enter username!';
+                    }
+                    return null;
+                  },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: _handleForgotPassword,
+                        style: const ButtonStyle().copyWith(
+                            overlayColor: const MaterialStatePropertyAll(
+                                Colors.transparent)),
+                        child: const Text('Forgot your password?')),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FilledButton(
+                  onPressed: _handleLogin,
+                  style: const ButtonStyle(
                       fixedSize:
-                          MaterialStatePropertyAll(Size(double.maxFinite, 50)),
+                          MaterialStatePropertyAll(Size(double.maxFinite, 50))),
+                  child: const Text("Log In"),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                      color: Colors.black,
+                    )),
+                    SizedBox(
+                      width: 10,
                     ),
-                    child: const Text("Sign Up"),
+                    Text("OR"),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                        child: Divider(
+                      color: Colors.black,
+                    )),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                FilledButton(
+                  onPressed: _handleSignup,
+                  style: const ButtonStyle(
+                    fixedSize:
+                        MaterialStatePropertyAll(Size(double.maxFinite, 50)),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          EvaIcons.facebook,
-                          color: Colors.white,
-                        ),
-                        style: const ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(
-                                Color.fromARGB(255, 1, 127, 254))),
+                  child: const Text("Sign Up"),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        EvaIcons.facebook,
+                        color: Colors.white,
                       ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            EvaIcons.twitter,
-                            color: Colors.white,
-                          ),
-                          style: const ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Colors.lightBlue))),
-                      IconButton(
+                      style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                              Color.fromARGB(255, 1, 127, 254))),
+                    ),
+                    IconButton(
                         onPressed: () {},
                         icon: const Icon(
-                          EvaIcons.google,
+                          EvaIcons.twitter,
                           color: Colors.white,
                         ),
                         style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.red)),
+                                MaterialStatePropertyAll(Colors.lightBlue))),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        EvaIcons.google,
+                        color: Colors.white,
                       ),
-                    ],
-                  ),
-                ],
-              )),
-        ),
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.red)),
+                    ),
+                  ],
+                ),
+              ],
+            )),
       ),
     );
   }
